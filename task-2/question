@@ -1,0 +1,20 @@
+Metrics:
+I would check the cpu / ram usage first, because those will crash the system
+if they deplete.
+Then I would monitor the bond usage, and check more specific metric in the
+load-balancer api like frontend time to respond, concurrent session, queues,
+and compare them with backend over time.
+
+How ?
+Probably setup a ELK stack, but it can also be done on more classical (naggios),
+that way the state and values can accessed.
+
+Challenges
+The problem is to identify what is threshold in the metrics should trigger
+an investigation, check if it is a ddos or huge traffic spike.
+
+In the case of traffic spike, it could trigger a ci task, that boot a machine or
+vm, to help with the amount of connections.
+
+So the main challenge of this kind of monitoring, is to find a proper response,
+that will help the system without increasing technical debt.
